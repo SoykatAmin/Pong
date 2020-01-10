@@ -12,7 +12,11 @@ import javax.swing.Timer;
 
 
 public class main extends JPanel implements ActionListener, MouseListener, KeyListener{
-	
+												
+	/*																	
+			Dichiarazioni delle variabili
+	*/	
+																
 	Timer timer = new Timer(2, this);
 	
 	static Boolean gameover = false;
@@ -49,7 +53,11 @@ public class main extends JPanel implements ActionListener, MouseListener, KeyLi
 	
 	int punteggio1, punteggio2;
 	
-	public void paint (Graphics g) {
+	/*
+				Grafica di gioco
+	*/
+	
+	public void paint (Graphics g) {									
 		super.paint(g);
 		setBackground(Color.BLACK);
 		
@@ -88,7 +96,10 @@ public class main extends JPanel implements ActionListener, MouseListener, KeyLi
 		
 	}
 	
-	
+	/*
+	   			Costruttore
+	*/
+		
 	public main() {
 		timer.start();
 		addKeyListener(this);
@@ -97,11 +108,19 @@ public class main extends JPanel implements ActionListener, MouseListener, KeyLi
 		setFocusTraversalKeysEnabled(false);
 	}
 	
+	/*
+				Logica di gioco
+	*/
+	
 	public void actionPerformed(ActionEvent e) {
 		
-		Collisione();
+		Collisione();									//Funzione utilizzata per verificare quando la palla tocca la racchetta 
 		
-		if (y < 0) {
+		/*
+					Correzione 
+		*/
+		
+		if (y < 0) {								
 			
 			velY = 0;
 			y = 0;
@@ -198,6 +217,9 @@ public class main extends JPanel implements ActionListener, MouseListener, KeyLi
 
 		repaint();
 	}
+	
+	
+	
 
 	public static void main(String[] args) {
 		main pad = new main();
@@ -205,11 +227,16 @@ public class main extends JPanel implements ActionListener, MouseListener, KeyLi
 		
 		frame.add(pad); 
 
-		frame.setTitle("Paddle");
+		frame.setTitle("Pong");
+		
 		frame.setVisible(true);
+		
 		frame.setSize(larghezza, altezza);
+		
 		frame.setResizable(false);
+		
 		//frame.setBackground(Color.BLACK);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
